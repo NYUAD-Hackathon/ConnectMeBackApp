@@ -7,7 +7,7 @@ app = Flask(__name__)
 def replyToSms():
 	resp = twilio.twiml.Response()
 	resp.message("What is your Name?")
-	return str(resp)
+	return str(resp), 200, {"Content-Type":"application/xml; charset=utf-8"}
 
 if __name__ == "__main__":
     app.run(debug=True)
