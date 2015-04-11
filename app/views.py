@@ -1,29 +1,38 @@
 # -*- coding: utf-8 -*
 from app import db, app, models
-from flask import request, jsonify, render_template
+from flask import request, jsonify, render_template, g
 import twilio.twiml
+import re
+from twilio.rest import TwilioRestClient
+import settings
+
+@app.before_request
+def before_request():
+	g.client = TwilioRestClient(settings.ACCOUNT_SID, settings.AUTH_TOKEN)
 
 
 @app.route("/", methods= ["GET", "POST"])
 def home():
 	if request.method == "POST":
-		resp = twiml.Response()
 		name = request.form.get('name')
 		searchingForName = request.form.get('searchingForName')
 		message = request.form.get('message')
 		phoneNumber = request.form.get('phoneNumber')
-	
+		
 		user = models.User(name, searchingForName, message, phoneNumber)
 		db.session.add(user)
 		db.session.commit()
 		#search database and if there's a match, return relevant info.
-		match = match(user.name, user.searchingForName) 
-		if match != None:
-			return jsonify({'name':match.name, 'searchingForName':match.searchingForName, "message":match.message})	
+		matchFound = match(user.name, user.searchingForName) 
+		if matchFound != None:
+			g.client.messages.create(to=matchFound.phoneNumber, from_=settings.FROM_NUMBER, body=message)
+			g.client.messages.create(to=phoneNumber, from_=settings.FROM_NUMBER, body=matchFound.message)
+			return jsonify({'name':matchFound.name, 'searchingForName':matchFound.searchingForName, "message":matchFound.message})	
 		else:
-			return jsonify({"message: Bulletin posted. Pending match"})
+			return jsonify({"message": "Bulletin posted. Pending match"})
 
-	return render_template("index.html")
+	return str("Test")
+	#render_template("index.html")
 
 
 
@@ -31,7 +40,8 @@ def home():
 @app.route("/sms", methods= ["GET", "POST"])
 def replyToSms():
 	messageBody = request.form.get('Body')
-	resp = twiml.Response()
+	resp = twilio.twiml.Response()
+	senderPhone = request.form.get('From')
 	body = request.form.get('Body')
 	tokens = re.sub(r'\s', '', body).split('*')
 	# If the message is malformed, remind the user of format
@@ -40,13 +50,13 @@ def replyToSms():
 		resp.message(u'عذراً. الرجاء إستعمال هذا التصميم : إسمي*اسمهم*الرسالة')
 	else:
 		#store into DB
-		user = models.User(tokens[0], tokens[1], tokens[2])
+		user = models.User(tokens[0], tokens[1], tokens[2], senderPhone)
 		db.session.add(user)
 		db.session.commit()
 		#search database and if there's a match, return relevant info.
 		match = match(user.name, user.searchingForName) 
 		if match != None:
-			res.message("Match Found. Match Name: "+match.name+". Message: "+match.message)
+			resp.message("Match Found. Match Name: "+match.name+". Message: "+match.message)
 		# if no match, just say bulletin was posted but no match yet.	
 		else:
 			#resp.message("Bulletin posted. Pending match.")
@@ -60,8 +70,9 @@ def replyToSms():
 
 @app.route("/getUser")
 def getUsers():
+	return request.form.get('name')
 	users = models.User.query.all()
-	user = users[0]
+	user = models.User.query.filter_by(name = request.form.get('name')).first()
 	return jsonify({'name':user.name, 'searchingForName':user.searchingForName, "message":user.message})
 	#jsonify(results=users[0]),200, {"Content-Type":"application/json; charset=utf-8"}
 
@@ -72,4 +83,4 @@ def match(name, searchingFor):
 	if result == None:
 		return None
 	else:
-		return str(result.name)
+		return result
