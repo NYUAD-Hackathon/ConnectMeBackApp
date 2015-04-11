@@ -1,0 +1,4 @@
+ACCOUNT_SID = "AC4cce0901d0665df29b1027cfbb17a1bd"
+AUTH_TOKEN = "d255511bbdb31ccbf06240be80d764d8"
+FROM_NUMBER = "+16142124628"
+DB_URI = 'sqlite:////tmp/cmb.db'

@@ -36,7 +36,7 @@ def home():
 
 
 
-#This route is only called by Heroku
+#This route is only called by Twilio
 @app.route("/sms", methods= ["GET", "POST"])
 def replyToSms():
 	messageBody = request.form.get('Body')
@@ -48,6 +48,7 @@ def replyToSms():
 	if (len(tokens) != 3):
 		#resp.message("Sorry. Please use format: my name * their name * message")
 		resp.message(u'عذراً. الرجاء إستعمال هذا التصميم : إسمي*اسمهم*الرسالة')
+
 	else:
 		#store into DB
 		user = models.User(tokens[0], tokens[1], tokens[2], senderPhone)
