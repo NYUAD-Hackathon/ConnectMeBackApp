@@ -4,6 +4,7 @@ import re
 from flask import Flask
 from flask import request
 from twilio import twiml
+from app import app
 
 app = Flask(__name__)
 
