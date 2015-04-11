@@ -1,4 +1,4 @@
-from app import db
+from app import db, app
 from flask import request
 import twilio.twiml
 
@@ -7,5 +7,5 @@ import twilio.twiml
 def replyToSms():
 	messageBody = request.form.get('Body')
 	resp = twilio.twiml.Response()
-	resp.message("What is your Name?")
+	resp.message("Hello, What is your Name?")
 	return str(resp), 200, {"Content-Type":"application/xml; charset=utf-8"}
