@@ -17,6 +17,6 @@ class User(db.Model):
         self.message = message
         self.phoneNumber = phoneNumber
 
-    def __repr__(self):
-        return '<User %r is searching for %r>' % (self.firstName, self.searchingForName)
+    #def __repr__(self):
+        #return '<User %r is searching for %r>' % (self.firstName, self.searchingForName)
 
