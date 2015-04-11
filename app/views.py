@@ -31,8 +31,8 @@ def home():
 		else:
 			return jsonify({"message": "Bulletin posted. Pending match"})
 
-	return str("Test")
-	#render_template("index.html")
+	return render_template("home.html")
+	#render_template("home.html")
 
 
 
@@ -43,7 +43,8 @@ def replyToSms():
 	resp = twilio.twiml.Response()
 	senderPhone = request.form.get('From')
 	body = request.form.get('Body')
-	tokens = re.sub(r'\s', '', body).split('*')
+	#body = body[::-1]
+	tokens = [item.strip() for item in body.split('*')]
 	# If the message is malformed, remind the user of format
 	if (len(tokens) != 3):
 		#resp.message("Sorry. Please use format: my name * their name * message")
@@ -55,9 +56,13 @@ def replyToSms():
 		db.session.add(user)
 		db.session.commit()
 		#search database and if there's a match, return relevant info.
-		match = match(user.name, user.searchingForName) 
-		if match != None:
-			resp.message("Match Found. Match Name: "+match.name+". Message: "+match.message)
+		matchFound = match(user.name, user.searchingForName) 
+		if matchFound:
+			print"MATCH FOund"
+			g.client.messages.create(to=matchFound.phoneNumber,\
+			 from_=settings.FROM_NUMBER, body="Match Found. Match Name: "+matchFound.name+". Message: "+tokens[2])
+			resp.message("Match Found. Match Name: "+matchFound.name+". Message: "+matchFound.message)
+
 		# if no match, just say bulletin was posted but no match yet.	
 		else:
 			#resp.message("Bulletin posted. Pending match.")
@@ -80,8 +85,8 @@ def getUsers():
 
 #This function checks if there is a match between two people
 def match(name, searchingFor):
+	print name
+	print searchingFor
 	result = models.User.query.filter_by(name = searchingFor, searchingForName = name).first()
-	if result == None:
-		return None
-	else:
-		return result
+	print result
+	return result

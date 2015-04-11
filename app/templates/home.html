@@ -12,12 +12,12 @@
     <title>صلني</title>
 
     <!-- Bootstrap core CSS -->
-    <link href="style.css" rel="stylesheet">
-    <link href="animate.css" rel="stylesheet">
+    <link href="{{ url_for('static', filename='style.css') }}" rel="stylesheet">
+    <link href="{{ url_for('static', filename='animate.css') }}" rel="stylesheet">
 
     <!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
     <!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
-    <script src="./js/ie-emulation-modes-warning.js"></script>
+    <script src="{{ url_for('static', filename='ie-emulation-modes-warning.js') }}"></script>
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
@@ -66,12 +66,12 @@
 
     <!-- Carousel
     ================================================== -->
-    <img src="img/logo.png" id="logo">
+    <img src="{{ url_for('static', filename='logo.png') }}" id="logo">
     <div id="myCarousel" class="carousel slide" data-ride="carousel">
       <!-- Indicators -->
       <div class="carousel-inner" role="listbox">
         <div class="item active" id="main-info">
-          <img class="first-slide" src="img/test3_bw.jpg" alt="First slide">
+          <img class="first-slide" src="{{ url_for('static', filename='test3_bw.jpg') }}" alt="First slide">
           <div class="container">
             <div class="carousel-caption">
               <h1>هل إفترقت عن عائلتك ؟</h1>
@@ -123,17 +123,17 @@
       <div class="row">
         <div class="divdiv">
          <div class="col-lg-4">
-          <img class="img-circle" src="img/meet.png" width="150" height="150">
+          <img class="img-circle" src="{{ url_for('static', filename='meet.png') }}" width="150" height="150">
           <p class="steps">3. ستتلقى رسالتهم و سيتلقون رسالتك </p>
         </div><!-- /.col-lg-4 -->
        
         <div class="col-lg-4">
-          <img class="img-circle" src="img/receive.png" width="150" height="150">
+          <img class="img-circle" src="{{ url_for('static', filename='receive.png') }}" width="150" height="150">
           <p class="steps">2. الشخص الذي تبحث عنه سيتواصل معنا على الرقم 16142124628+  بإرسال إسمه و اسمك و رسالة قصيرة</p>
         </div><!-- /.col-lg-4 -->
         
          <div class="col-lg-4">
-          <img class="img-circle" src="img/send.png" width="150" height="150">
+          <img class="img-circle" src="{{ url_for('static', filename='send.png') }}" width="150" height="150">
           <p class="steps">1. أدخِل إسمك و اسم الذي تبحث عنه و رقم هاتفك و اترك الباقي علينا </p>
         </div><!-- /.col-lg-4 -->
       </div>
@@ -150,7 +150,7 @@
           <p class="lead"> هناك أكثر من 50 مليون شخص نازح بسبب الصراع أو الاضطهاد؛ منهم ما يقارب 16.7 مليون لاجئ <a href="http://www.unhcr.org/5399a14f9.html"> (حسب تقرير وكالة الأمم المتحدة للاجئين</a>).</p>
         </div>
         <div class="col-md-5">
-          <img class="featurette-image img-responsive center-block" src="img/picture1.jpg" data-holder-rendered="true">
+          <img class="featurette-image img-responsive center-block" src="{{ url_for('static', filename='picture1.jpg') }}" data-holder-rendered="true">
         </div>
       </div>
 
@@ -162,7 +162,7 @@
           <p class="lead">%71 من اللاجئين المترمكزين في المناطق الريفية يملكون هواتف محمولة, لكن فقط 11% منهم يستطيعون الوصول لشبكة الانترنت. هذه الهواتف هي عنصر اساسي لتأمين للتواصل و مساعدة الناجين<a href="http://techreviewpanarab.com/en/computing/technology-for-syrian-refugees/"> . اقرأ المزيد >> </a></p>
         </div>
         <div class="col-md-5 col-md-pull-7">
-          <img class="featurette-image img-responsive center-block" src="img/picture2.jpg" data-holder-rendered="true">
+          <img class="featurette-image img-responsive center-block" src="{{ url_for('static', filename='picture2.jpg') }}" data-holder-rendered="true">
         </div>
       </div>
 
@@ -175,7 +175,7 @@
           <a href="http://goo.gl/sJVcjP"> . اقرأ المزيد >> </a></p>
         </div>
         <div class="col-md-5">
-          <img class="featurette-image img-responsive center-block" src="img/picture3.jpg" data-holder-rendered="true">
+          <img class="featurette-image img-responsive center-block" src="{{ url_for('static', filename='picture3.jpg') }}" data-holder-rendered="true">
         </div>
       </div>
 
@@ -185,13 +185,13 @@
     <!-- Bootstrap core JavaScript
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
-    <script src="./js/jquery.min.js"></script>
-    <script src="js/script.js"></script>
-    <script src="./js/bootstrap.min.js"></script>
+    <script src="{{ url_for('static', filename='jquery.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+    <script src="{{ url_for('static', filename='bootstrap.min.js') }}"></script>
     <!-- Just to make our placeholder images work. Don't actually copy the next line! -->
-    <script src="./js/holder.js"></script>
+    <script src="{{ url_for('static', filename='holder.js') }}"></script>
     <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
-    <script src="./js/ie10-viewport-bug-workaround.js"></script>
+    <script src="{{ url_for('static', filename='ie10-viewport-bug-workaround.js') }}"></script>
   
 
 </body></html>
