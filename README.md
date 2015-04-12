@@ -1,6 +1,10 @@
+
 # CONNECT ME BACK
 
 ConnectMeBack is an SMS platform that provides a language agnostic bulletin board to enable lost refugees to safely reconnect with their loved ones.
+
+# URL
+http://www.connectmeback.org
 
 ## STUDENTS
 Jocelyn Schulz (New York University, USA)  
@@ -29,3 +33,4 @@ Abed El Karim Halawi (Tech Lead, Vinelab, Lebanon)
 
 ### Frontend
 	- Bootstrap
+	- JQuery
