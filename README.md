@@ -4,7 +4,7 @@
 ConnectMeBack is an SMS platform that provides a language agnostic bulletin board to enable lost refugees to safely reconnect with their loved ones.
 
 [http://www.connectmeback.org](http://www.connectmeback.org)  
-[Presentation](http://prezi.com/sjxw80ieyhxm/?utm_campaign=share&utm_medium=copy)
+[Presentation](https://docs.google.com/presentation/d/1SibTLkLiwEp3lVW566An9QAxm66M5CoiBrG4COojoIQ/edit?usp=sharing)
 
 ## STUDENTS
 Jocelyn Schulz (New York University, USA)  
