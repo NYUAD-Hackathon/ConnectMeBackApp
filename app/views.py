@@ -24,12 +24,13 @@ def home():
 		db.session.commit()
 		#search database and if there's a match, return relevant info.
 		matchFound = match(user.name, user.searchingForName) 
-		if matchFound != None:
+		if matchFound:
 			g.client.messages.create(to=matchFound.phoneNumber, from_=settings.FROM_NUMBER, body=message)
 			g.client.messages.create(to=phoneNumber, from_=settings.FROM_NUMBER, body=matchFound.message)
-			return jsonify({'name':matchFound.name, 'searchingForName':matchFound.searchingForName, "message":matchFound.message})	
+			return jsonify({'name':matchFound.name, 'searchingForName':matchFound.searchingForName,\
+			 "message":matchFound.message, "phone":matchFound.phoneNumber})	
 		else:
-			return jsonify({"message": "Bulletin posted. Pending match"})
+			return jsonify({})
 
 	return render_template("home.html")
 	#render_template("home.html")
@@ -60,13 +61,14 @@ def replyToSms():
 		if matchFound:
 			print"MATCH FOund"
 			g.client.messages.create(to=matchFound.phoneNumber,\
-			 from_=settings.FROM_NUMBER, body="Match Found. Match Name: "+matchFound.name+". Message: "+tokens[2])
-			resp.message("Match Found. Match Name: "+matchFound.name+". Message: "+matchFound.message)
+			 from_=settings.FROM_NUMBER, body=u'وجدناهم! الاسم:'+matchFound.name+u'. الهاتف:'+matchFound.phoneNumber+u'. الرسالة: '+tokens[2])
+			resp.message(u'وجدناهم! الاسم:'+matchFound.name+u'. الهاتف:'+matchFound.phoneNumber+u'. الرسالة: '+matchFound.message)
+			
 
 		# if no match, just say bulletin was posted but no match yet.	
 		else:
 			#resp.message("Bulletin posted. Pending match.")
-			resp.message(u'لقد تم نشر هذا البيان | التطابق  في قيد الانتظار')
+			resp.message(u'لقد تم نشر هذا البيان | التطابق  في قيد الانتظار. عبر تسليم هذه الرسالة أنت توافق على تبادل هذه المعلومات ')
 			
 	return str(resp), 200, {"Content-Type":"application/xml; charset=utf-8"}
 
