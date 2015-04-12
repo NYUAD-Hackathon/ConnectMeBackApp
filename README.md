@@ -11,3 +11,5 @@ Stack:
 
 2. Frontend
 	- Bootstrap
+
+3. Team Members
