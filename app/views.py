@@ -45,7 +45,7 @@ def replyToSms():
 	senderPhone = request.form.get('From')
 	body = request.form.get('Body')
 	#body = body[::-1]
-	tokens = [item.strip().encode('ISO_8859_6') for item in body.split('*')]
+	tokens = [item.strip() for item in body.split('*')]
 	print tokens
 	# If the message is malformed, remind the user of format
 	if (len(tokens) != 3):
