@@ -54,9 +54,13 @@ def replyToSms():
 
 	else:
 		#store into DB
+		print "Before DB"
 		user = models.User(tokens[0], tokens[1], tokens[2], senderPhone)
+		print "before Add"
 		db.session.add(user)
+		print "before Commit"
 		db.session.commit()
+		print "After DB"
 		#search database and if there's a match, return relevant info.
 		matchFound = match(user.name, user.searchingForName) 
 		print matchFound
