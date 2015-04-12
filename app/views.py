@@ -46,6 +46,7 @@ def replyToSms():
 	body = request.form.get('Body')
 	#body = body[::-1]
 	tokens = [item.strip() for item in body.split('*')]
+	print tokens
 	# If the message is malformed, remind the user of format
 	if (len(tokens) != 3):
 		#resp.message("Sorry. Please use format: my name * their name * message")
@@ -58,6 +59,7 @@ def replyToSms():
 		db.session.commit()
 		#search database and if there's a match, return relevant info.
 		matchFound = match(user.name, user.searchingForName) 
+		print matchFound
 		if matchFound:
 			print"MATCH FOund"
 			g.client.messages.create(to=matchFound.phoneNumber,\
@@ -68,7 +70,7 @@ def replyToSms():
 		# if no match, just say bulletin was posted but no match yet.	
 		else:
 			#resp.message("Bulletin posted. Pending match.")
-			resp.message(u'لقد تم نشر هذا البيان | التطابق  في قيد الانتظار. عبر تسليم هذه الرسالة أنت توافق على تبادل هذه المعلومات ')
+			resp.message(u'لقد تم نشر هذا البيان | التطابق  في قيد الانتظار. عبر تسليم هذه الرسالة أنت توافق على تبادل هذه المعلومات')
 			
 	return str(resp), 200, {"Content-Type":"application/xml; charset=utf-8"}
 

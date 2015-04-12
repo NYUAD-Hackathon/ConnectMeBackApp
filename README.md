@@ -32,5 +32,11 @@ Abed El Karim Halawi (Tech Lead, Vinelab, Lebanon)
 	- Twilio API
 
 ### Frontend
+<<<<<<< HEAD
 	- Bootstrap
 	- JQuery
+=======
+	- 
+	
+### Presentation http://prezi.com/sjxw80ieyhxm/?utm_campaign=share&utm_medium=copy
+>>>>>>> 91c56bc90354aa9cb749c75ce476c6bd3f8f94e3
