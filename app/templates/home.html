@@ -70,7 +70,7 @@
 
     <!-- Carousel
     ================================================== -->
-    <img src="{{ url_for('static', filename='logo.png') }}" id="logo">
+    <img src="{{ url_for('static', filename='logo.png') }}" style="width:15%; height:auto;" id="logo">
     <div id="myCarousel" class="carousel slide" data-ride="carousel">
       <!-- Indicators -->
       <div class="carousel-inner" role="listbox">
@@ -85,7 +85,8 @@
                 <input type="text" class="form-control main-form" id="input-destination" placeholder="اسمهم">
                 <input type="text" class="form-control main-form" id="input-message" placeholder="اكتب الرسالة">
                 <input type="text" class="form-control main-form" id="input-phone" placeholder="رقم هاتفك">
-                <br>
+                <div class="checkbox"><label style="width: 100%; text-align: right; text-shadow: none; color: #B0B0B0; font-size: 21px; vertical-align: middle;"><input type="checkbox" name="legal" value="" style="float: right; padding-left: 10%; padding-top: 1%; border: #DC912C" required>لقد قرأت ووافقت على <a href="#">شروط الخدمة</a></label>
+                </div>
                 <button type="submit" class="btn btn-default" id="submit-form-button">صلني</button>
             </form>
             </div>
