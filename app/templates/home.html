@@ -78,17 +78,18 @@
           <img class="first-slide" src="{{ url_for('static', filename='test3_bw.jpg') }}" alt="First slide">
           <div class="container">
             <div class="carousel-caption">
-              <h1>هل إفترقت عن عائلتك ؟</h1>
+              <h1>هل انفصلت عن عائلتك؟</h1>
               <p id="slogan">إستخدم "صِلني" للتواصل مع الأقارب و الأصدقاء</p>
              <form class="animated bounceIn panel" id="main-form">
                 <input type="text" class="form-control main-form" id="input-recipient" placeholder="اسمك">
-                <input type="text" class="form-control main-form" id="input-destination" placeholder="اسمهم">
-                <input type="text" class="form-control main-form" id="input-message" placeholder="اكتب الرسالة">
-                <input type="text" class="form-control main-form" id="input-phone" placeholder="رقم هاتفك">
-                <div class="checkbox"><label style="width: 100%; text-align: right; text-shadow: none; color: #B0B0B0; font-size: 21px; vertical-align: middle;"><input type="checkbox" name="legal" value="" style="float: right; padding-left: 10%; padding-top: 1%; border: #DC912C" required>لقد قرأت ووافقت على <a href="#">شروط الخدمة</a></label>
+                <input type="text" class="form-control main-form" id="input-destination" placeholder="اسم الشخص الذي تبحث عنه">
+                <input type="text" class="form-control main-form" id="input-message" placeholder="رقم هاتفك">
+                <input type="text" class="form-control main-form" id="input-phone" placeholder="اكتب رسالتك">
+                <div class="checkbox"><label style="width: 100%; text-align: right; text-shadow: none; color: #B0B0B0; font-size: 21px; vertical-align: middle;"><input type="checkbox" name="legal" value="" style="float: right; padding-left: 10%; padding-top: 1%; border: #DC912C" required>لقد قرأت ووافقت على <a href="#" data-toggle="modal" data-target="#myModal">شروط الخدمة</a></label>
                 </div>
                 <button type="submit" class="btn btn-default" id="submit-form-button">صلني</button>
             </form>
+
             </div>
  <!--            <form>
             <div class="form-group">
@@ -116,7 +117,24 @@
           </div>
         </div>
     </div><!-- /.carousel -->
-
+<!-- Modal -->
+            <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+              <div class="modal-dialog">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="myModalLabel">شروط الاستخدام</h4>
+                  </div>
+                  <div class="modal-body">
+                    المعلومات المقدمة سيتم تبادلها مع مقدمي الخدمة بهدف الربط بين الأشخاص
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">OK</button>
+                    <!-- <button type="button" class="btn btn-primary">OK</button> -->
+                  </div>
+                </div>
+              </div>
+            </div>
 
     <!-- Marketing messaging and featurettes
     ================================================== -->
@@ -129,17 +147,17 @@
         <div class="divdiv">
          <div class="col-lg-4">
           <img class="img-circle" src="{{ url_for('static', filename='meet.png') }}" width="150" height="150">
-          <p class="steps">3. ستتلقى رسالتهم و سيتلقون رسالتك </p>
+          <p class="steps">3. ستتلقى رسالتهم و سيتلقون رسالتك و تجتمع معهم من جديد </p>
         </div><!-- /.col-lg-4 -->
        
         <div class="col-lg-4">
           <img class="img-circle" src="{{ url_for('static', filename='receive.png') }}" width="150" height="150">
-          <p class="steps">2. الشخص الذي تبحث عنه سيتواصل معنا على الرقم 16467913113+  بإرسال إسمه و اسمك و رسالة قصيرة</p>
+          <p class="steps">2. الشخص الذي تبحث عنه سيتواصل معنا على الرقم 16142124628+  بإرسال إسمه و إسمك و رسالة قصيرة</p>
         </div><!-- /.col-lg-4 -->
         
          <div class="col-lg-4">
           <img class="img-circle" src="{{ url_for('static', filename='send.png') }}" width="150" height="150">
-          <p class="steps">1. أدخِل إسمك و اسم الذي تبحث عنه و رقم هاتفك و اترك الباقي علينا </p>
+          <p class="steps">1. أدخِل إسمك و إسم الشخص الذي تبحث عنه و رقم هاتفك و اترك الباقي لنا </p>
         </div><!-- /.col-lg-4 -->
       </div>
       </div><!-- /.row -->

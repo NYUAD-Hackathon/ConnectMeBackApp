@@ -1,5 +1,9 @@
 $(document).ready(function() {
 
+    $('#myModal').on('shown.bs.modal', function () {
+      $('#myInput').focus()
+    })
+
     $("#main-form").submit(function(e) {
         console.log("Form is being submitted!");
         e.preventDefault();
@@ -17,7 +21,7 @@ $(document).ready(function() {
             success: function(data){
                 if (JSON.stringify(data) == "{}") {
                     $("#main-form").hide();
-                    var newElement = "<div class='bounceIn panel' style='height:226px; text-shadow: none; padding-left: 15px; padding-right: 15px; width: 75%; margin: 0 auto; margin-bottom:23px; margin-top:20px; padding-top: 20px; color:#5C5C5C; font-size: 18px'>You'll be notified via SMS as soon as your loved one submits a message. Please submit another <a href='http://www.connectmeback.org/'>here.</a></div>"
+                    var newElement = "<div class='bounceIn panel' style='height:226px; text-shadow: none; padding-left: 15px; padding-right: 15px; width: 75%; margin: 0 auto; margin-bottom:23px; margin-top:20px; padding-top: 10%; color:#5C5C5C; font-size: 18px'>سيتم اعلامك عبر الرسائل النصية بأقرب وقت لحين استلامنا لأي رسالة لك من الشخص الذي تبحث عنه.اذا أردت ارسال رسالة اخرى <a href='http://127.0.0.1:5000/'>اضغط هنا</a></div>"
                     $("#slogan").append(newElement);
                 } 
                 if ('name' in data) {
@@ -29,7 +33,7 @@ $(document).ready(function() {
                     var myName = data['searchingForName'];
                     var message = data['message'];
                     var phoneNumber = data['phone'];
-                    var newElement = "<div class='bounceIn panel' style='height:226px; text-shadow: none; padding-left: 15px; padding-right: 15px; width: 75%; margin: 0 auto; margin-bottom:23px; margin-top:20px; padding-top: 20px; color:#5C5C5C; font-size: 18px'>Wow! We found a match. " + searchingForName + " was also looking for you, too. They say: '" + message + "', and you can contact them at: " + phoneNumber + ".</div>";
+                    var newElement = "<div class='bounceIn panel' style='height:226px; text-shadow: none; padding-left: 15px; padding-right: 15px; width: 75%; margin: 0 auto; margin-bottom:23px; margin-top:20px; padding-top: 10%; color:#5C5C5C; font-size: 18px'>وجدناهم! الاسم: "+ searchingForName + ". الهاتف: "+ phoneNumber +". الرسالة: "+ message +".</div>";
                     $("#slogan").append(newElement);
                 }
             }
