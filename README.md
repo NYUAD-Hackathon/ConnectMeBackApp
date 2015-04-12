@@ -3,7 +3,7 @@
 
 ConnectMeBack is an SMS platform that provides a language agnostic bulletin board to enable lost refugees to safely reconnect with their loved ones.
 
-[http://www.connectmeback.org](http://www.connectmeback.org)
+[http://www.connectmeback.org](http://www.connectmeback.org)  
 [Presentation](http://prezi.com/sjxw80ieyhxm/?utm_campaign=share&utm_medium=copy)
 
 ## STUDENTS
