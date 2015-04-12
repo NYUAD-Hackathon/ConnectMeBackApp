@@ -12,7 +12,7 @@ $(document).ready(function() {
 
         $.ajax({
             type: "POST",
-            url: "http://www.connectmeback.org/sms",
+            url: "http://www.connectmeback.org/",
             data: values,
             success: function(data){
                 if (JSON.stringify(data) == "{}") {
